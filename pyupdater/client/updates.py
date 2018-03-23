@@ -170,7 +170,6 @@ class Restarter(object):
         with io.open(self.bat_file, 'w', encoding='utf-8') as bat:
             if isFolder:
                 bat.write("""
-@echo off
 :: BatchGotAdmin
 :--------------------------------------
 REM  --> Check for permissions
@@ -202,7 +201,6 @@ DEL "%~f0"
 """.format(self.updated_app, self.current_app, self.vbs_file))
             else:
                 bat.write("""
-@echo off
 :: BatchGotAdmin
 :--------------------------------------
 REM  --> Check for permissions
@@ -248,7 +246,6 @@ DEL "%~f0"
         with io.open(self.bat_file, 'w', encoding='utf-8') as bat:
             if isFolder:
                 bat.write("""
-@echo off
 :: BatchGotAdmin
 :--------------------------------------
 REM  --> Check for permissions
@@ -285,7 +282,6 @@ DEL "%~f0"
                     self.vbs_file))
             else:
                 bat.write("""
-@echo off
 :: BatchGotAdmin
 :--------------------------------------
 REM  --> Check for permissions
