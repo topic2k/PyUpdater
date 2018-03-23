@@ -320,6 +320,7 @@ DEL "%~f0"
             vbs.write('CreateObject("Wscript.Shell").Run """" '
                       '& WScript.Arguments(0) & """", 0, False')
         log.debug('Starting update batch file')
+        log.info(self.bat_file)
         args = ['wscript.exe', self.vbs_file, self.bat_file]
         subprocess.Popen(args)
         os._exit(0)
