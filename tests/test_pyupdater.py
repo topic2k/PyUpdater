@@ -75,7 +75,10 @@ class TestExecutionExtraction(object):
 
         # We are moving all of the files from the deploy directory to the
         # cwd. We will start a simple http server to use for updates
+        print("---===### STEP 1 ###===---")
+        logging.debug("---===### LOG 1 ###===---")
         with ChDir(data_dir):
+            print("---===### STEP 2 ###===---")
             simpleserver.start(port)
 
             cmd = 'python build_onefile_extract.py %s %s %s' % (custom_dir, port,windowed)
