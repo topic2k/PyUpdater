@@ -33,6 +33,7 @@ import sys
 import tarfile
 import threading
 import zipfile
+import six
 
 from dsdev_utils.helpers import Version
 from dsdev_utils.paths import ChDir, get_mac_dot_app_dir, remove_any
@@ -49,17 +50,20 @@ log = logging.getLogger(__name__)
 
 
 def file_require_admin(file_path):
-    dir_name, exe_file = os.path.split(file_path)
-    cmd = 'cd "{}" && copy "{}" /Y /B +,,'.format(dir_name, exe_file)
-    process = subprocess.Popen(
-        cmd,
-        shell=True,
-        stdin=subprocess.PIPE,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT
-    )
-    output = process.stdout.read()
-    return "Access is denied" in output
+    if six.PY2:
+        try:
+            with open(file_path.decode('utf-8'), "a"):
+                pass
+            return False
+        except IOError as e:
+            return e.errno == 13
+    elif six.PY3:
+        try:
+            with open(file_path.decode('utf-8'), "a"):
+                pass
+            return False
+        except PermissionError:
+            return True
 
 
 def dir_requires_admin(dir):
