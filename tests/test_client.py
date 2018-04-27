@@ -166,7 +166,7 @@ class TestDownload(object):
         update = client.update_check(client.app_name, '0.0.1')
         assert update is not None
         assert update.app_name == 'Acme'
-        update.download(async=True)
+        update.download(async_dl=True)
         count = 0
         while count < 61:
             if update.is_downloaded() is True:

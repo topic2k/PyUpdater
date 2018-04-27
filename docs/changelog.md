@@ -689,7 +689,7 @@
   - Tox testing
   - ETA provided to callbacks
   - Async download
-    - download(async=True)
+    - download(async_dl=True)
 
 ###Updated
 

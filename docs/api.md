@@ -33,7 +33,7 @@ Args:
 
 Cleans up old update archives for this app or asset
 
-##### AppUpdate.download(async=False)
+##### AppUpdate.download(async_dl=False)
 
 Downloads update
 
@@ -195,7 +195,7 @@ data (dict): Info dict
 
 Cleans up old update archives for this app or asset
 
-##### LibUpdate.download(async=False)
+##### LibUpdate.download(async_dl=False)
 
 Downloads update
 
