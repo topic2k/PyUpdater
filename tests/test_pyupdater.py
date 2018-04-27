@@ -120,7 +120,9 @@ class TestExecutionExtraction(object):
             update_lock = filelock.FileLock(lock_path, LOCK_TIMEOUT)
 
             output_file = 'version1.txt'
+            print("OUTPUT_FILE", output_file)
             with update_lock.acquire(LOCK_TIMEOUT, 5):
+                print("with update_lock.acquire(LOCK_TIMEOUT, 5)")
                 count = 0
                 while count < 5:
                     # Call the binary to self update
@@ -131,7 +133,8 @@ class TestExecutionExtraction(object):
                     print("Retrying app launch")
                     # Allow enough time for update process to complete.
                     time.sleep(AUTO_UPDATE_PAUSE)
-
+                else:
+                    print("WE HAD A BREAK!?")
             # Call the binary to ensure it's
             # the updated binary
             subprocess.call(app_run_command, shell=True)
