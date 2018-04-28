@@ -46,17 +46,6 @@ APP_NAME = 'Acme'
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger('PYUPDATER')
-logger.setLevel(logging.DEBUG)
-fmt = (
-    '%(asctime)s - '
-    '%(levelname)s - '
-    '%(processName)s:%(threadName)s - '
-    '%(message)s'
-)
-formatter = logging.Formatter(fmt)
-sh = logger.handlers[0]
-sh.setFormatter(formatter)
 
 @pytest.mark.usefixtures('cleandir', 'create_keypack', 'pyu')
 class TestSetup(object):
