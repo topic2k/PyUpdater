@@ -46,6 +46,17 @@ APP_NAME = 'Acme'
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger('PYUPDATER')
+logger.setLevel(logging.DEBUG)
+fmt = (
+    '%(asctime)s - '
+    '%(levelname)s - '
+    '%(processName)s:%(threadName)s - '
+    '%(message)s'
+)
+formatter = logging.Formatter(fmt)
+sh = logger.handlers[0]
+sh.setFormatter(formatter)
 
 @pytest.mark.usefixtures('cleandir', 'create_keypack', 'pyu')
 class TestSetup(object):
@@ -76,7 +87,7 @@ class TestExecutionExtraction(object):
         # We are moving all of the files from the deploy directory to the
         # cwd. We will start a simple http server to use for updates
         print("---===### STEP 1 ###===---")
-        logging.debug("---===### LOG 1 ###===---")
+        logger.debug("---===### LOG 1 ###===---")
         with ChDir(data_dir):
             print("---===### STEP 2 ###===---")
             simpleserver.start(port)
